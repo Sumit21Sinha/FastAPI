@@ -1,6 +1,16 @@
-from fastapi import FastAPI,Depends, Header, HTTPException
+from fastapi import FastAPI,Depends, Header, HTTPException, Request
+import time
 
 app = FastAPI()
+
+#Middleware
+@app.middleware("http")
+async def middlewaretest(request: Request, call_next):
+    start_time = time.time()
+    response = await call_next(request)
+    end_time = time.time()
+    print("Time taken =", end_time - start_time)
+    return response
 
 def verify_token(token : str = Header(None)):
     if token != "Pass123":
