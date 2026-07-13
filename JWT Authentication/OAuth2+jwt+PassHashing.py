@@ -31,7 +31,7 @@ def create_token(dicti : dict):
 def login_user(formuser : OAuth2PasswordRequestForm = Depends()):
     if (formuser.username == fake_db["admin"]["username"] and verify_password(formuser.password, fake_db["admin"]["hashed_password"])):
         token = create_token({"username" : formuser.username})
-        return {"token" : token}
+        return {"access_token": token, "token_type": "bearer"}
 
 def verify_token(token : str = Depends(OAuthkey)):
     payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
