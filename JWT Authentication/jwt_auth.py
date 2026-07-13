@@ -1,7 +1,6 @@
 from fastapi import FastAPI, Depends, HTTPException, Header
 from jose import jwt
 from datetime import datetime, timedelta, timezone
-
 from starlette import status
 
 app = FastAPI()
