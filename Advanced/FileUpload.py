@@ -2,7 +2,6 @@ from fastapi import FastAPI, HTTPException, UploadFile, File
 import os
 import shutil
 from fastapi.staticfiles import StaticFiles
-
 from starlette.staticfiles import StaticFiles
 
 app = FastAPI()
